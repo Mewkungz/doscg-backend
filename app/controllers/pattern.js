@@ -9,9 +9,10 @@ export const findPattern = async (req, res) => {
       console.log("Data from cache");
       return res.status(200).json(cache);
     }
-    var result = [3];
-    var len = 7;
+    var third = 5;
     const patternPlus = 2;
+    var result = [third-patternPlus];
+    var len = 7;
     let number = 0;
     for (let i = 1; i < len; i++) {
       if (i === 1) {
