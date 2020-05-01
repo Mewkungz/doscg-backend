@@ -1,4 +1,4 @@
-import { createLogger, format, transports } from 'winston'
+import { createLogger, format, transports } from "winston";
 
 const consoleTransport = new transports.Console({
   colorize: true,
@@ -6,7 +6,7 @@ const consoleTransport = new transports.Console({
 });
 
 const logger = createLogger({
-  level: 'info',
+  level: "info",
   format: format.json(),
   transports: [consoleTransport],
   exitOnError: false,
@@ -14,8 +14,8 @@ const logger = createLogger({
 
 logger.stream = {
   write: (message, encoding) => {
-    logger.info(message)
+    logger.info(message);
   },
 };
 
-export default logger
+export default logger;
