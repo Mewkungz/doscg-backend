@@ -1,9 +1,14 @@
 import handleError from "../utils/handleError";
-import { REQUIRED } from "../config/error";
-const express = require("express");
+const NodeCache = require("node-cache");
+const myCache = new NodeCache();
 
 export const findPattern = async (req, res) => {
   try {
+    const data = myCache.get("findPattern");
+    if (data) {
+      console.log("Data from cache");
+      return res.status(200).json(data);
+    }
     var result = [3];
     var len = 7;
     const patternPlus = 2;
@@ -12,10 +17,11 @@ export const findPattern = async (req, res) => {
       if (i === 1) {
         number = 3;
       } else {
-        number = result[i - 1] + (patternPlus * (i-1));
+        number = result[i - 1] + patternPlus * (i - 1);
       }
       result.push(number);
     }
+    myCache.set("findPattern", result);
     return res.status(200).json(result);
   } catch (error) {
     console.log(error);

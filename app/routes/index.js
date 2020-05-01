@@ -1,5 +1,6 @@
 import express from "express";
-import pattern from './pattern';
+import pattern from "./pattern";
+import value from "./value";
 
 const router = express.Router();
 
@@ -7,7 +8,8 @@ router.get("/", (req, res) => {
   res.send({ date: new Date() });
 });
 
-router.use('/findpattern',pattern);
+router.use("/findpattern", pattern);
+router.use("/findvalue", value);
 
 router.use((req, res, next) => {
   const err = new Error("Not Found");
