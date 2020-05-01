@@ -4,10 +4,10 @@ const myCache = new NodeCache();
 
 export const findPattern = async (req, res) => {
   try {
-    const data = myCache.get("findPattern");
-    if (data) {
+    const cache = myCache.get("findPattern");
+    if (cache) {
       console.log("Data from cache");
-      return res.status(200).json(data);
+      return res.status(200).json(cache);
     }
     var result = [3];
     var len = 7;
