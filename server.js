@@ -4,7 +4,10 @@ import cors from "cors";
 import logger from './app/lib/logger'
 
 const app = express();
+const bodyParser = require("body-parser");
+
 app.use(cors());
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.send({ staus: "server is running" });

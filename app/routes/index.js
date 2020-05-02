@@ -2,6 +2,7 @@ import express from "express";
 import pattern from "./pattern";
 import value from "./value";
 import map from "./map";
+import line from "./line"
 
 const router = express.Router();
 
@@ -12,6 +13,7 @@ router.get("/", (req, res) => {
 router.use("/findpattern", pattern);
 router.use("/findvalue", value);
 router.use("/findmap", map);
+router.use("/line", line);
 
 router.use((req, res, next) => {
   const err = new Error("Not Found");
