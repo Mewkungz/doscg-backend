@@ -4,9 +4,9 @@ const axios = require("axios");
 export const line = async (req, res) => {
   try {
     setTimeout(webhook, req, res, 10000);
-    this.notifyError();
+    notifyError();
   } catch (error) {
-    this.notifyError();
+    notifyError();
     console.log(error);
     return handleError(res, error);
   }
@@ -62,7 +62,7 @@ function handleText(message, replyToken) {
   return replyText(replyToken, message.text);
 }
 
-const notifyError = () => {
+function notifyError(){
   var token = process.env.LINE;
   var message = "Bot no response in 10 sec.";
   const headers = {
